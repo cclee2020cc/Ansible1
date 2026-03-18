@@ -1,0 +1,24 @@
+---
+- hosts: localhost
+  connection: local
+  gather_facts: false
+
+  tasks:
+    - name: Create myproject directory
+      file:
+        path: ./myproject
+        state: directory
+
+    - name: Create README.md
+      copy:
+        dest: ./myproject/README.md
+        content: "# My Project\nManaged by Ansible"
+
+    - name: Create config.txt
+      copy:
+        dest: ./myproject/config.txt
+        content: "version=1.0"
+
+    - name: Print completion message
+      debug:
+        msg: "Project setup complete"
